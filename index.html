@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac</title>
+    <link rel="icon" type="image/png" href="icono/descarga.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
+
+        h1 {
+            font-size: 50px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .red { color: #DB4437; } /* Rojo */
+        .blue { color: #4285F4; } /* Azul */
+        .yellow { color: #F4B400; } /* Amarillo */
+        .green { color: #0F9D58; } /* Verde */
+
+        .search-box {
+            position: relative;
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: gray;
+            cursor: pointer;
+        }
+
+        /* Estilos para la lista desplegable */
+        .dropdown {
+            display: none;
+            position: absolute;
+            width: 100%;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            list-style: none;
+            padding: 5px 0;
+            margin-top: 5px;
+            text-align: left;
+        }
+
+        .dropdown li {
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dropdown li:hover {
+            background: #f0f0f0;
+        }
+
+        .dropdown a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>
+        <span class="blue">I</span>
+        <span class="red">s</span>
+        <span class="yellow">a</span>
+        <span class="blue">a</span>
+        <span class="green">c</span>
+    </h1>
+
+    <div class="search-box">
+        <input type="text" id="search-bar" placeholder="Buscar aquí...">
+        <span class="search-icon" id="search-btn">🔍</span>
+
+        <ul class="dropdown" id="search-list">
+            <li><a href="https://ing-ramirez22.github.io/Game2.0/">Game</a></li>
+            <li><a href="https://ing-ramirez22.github.io/Talachas-Don-Gus/">Talachas Don Gus</a></li>
+            <li><a href="https://ing-ramirez22.github.io/chack/">Chack</a></li>
+            <li><a href="https://ing-ramirez22.github.io/pasteles/">Pasteles</a></li>
+        </ul>
+    </div>
+
+    <script>
+        const searchBar = document.getElementById("search-bar");
+        const searchList = document.getElementById("search-list");
+        const searchBtn = document.getElementById("search-btn");
+
+        // Mostrar la lista al hacer clic en la barra de búsqueda
+        searchBar.addEventListener("focus", () => {
+            searchList.style.display = "block";
+        });
+
+        // Ocultar la lista si se hace clic fuera de la barra y la lista
+        document.addEventListener("click", (event) => {
+            if (!searchBar.contains(event.target) && !searchList.contains(event.target)) {
+                searchList.style.display = "none";
+            }
+        });
+
+        // Redirigir a una página de búsqueda al hacer clic en la lupa
+        searchBtn.addEventListener("click", () => {
+            const query = searchBar.value.trim();
+            if (query) {
+                window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            }
+        });
+    </script>
+
+</body>
+</html>
+
